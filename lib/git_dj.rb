@@ -65,7 +65,7 @@ class GitDj
     else
       run_cmds [
         "git checkout #{integration_branch}",
-        "git pull origin #{integration_branch}",
+        "git pull --rebase origin #{integration_branch}",
         "git merge --no-edit #{cur_branch}",
         "git push origin #{integration_branch}",
         "git checkout #{cur_branch}"
@@ -85,8 +85,8 @@ class GitDj
     else
       run_cmds [
         "git checkout #{RELEASE_BRANCH}",
+        "git pull --rebase origin #{RELEASE_BRANCH}",
         "git merge #{cur_branch}",
-        "git pull origin #{RELEASE_BRANCH}",
         "git push origin #{RELEASE_BRANCH}",
         "git checkout #{cur_branch}"
       ]
@@ -103,14 +103,14 @@ class GitDj
   def get_updates_from_origin
     drop_commands_cache
     cur_branch = current_branch_name
-    run_cmds [ "git pull origin #{cur_branch}" ]
+    run_cmds [ "git pull --rebase origin #{cur_branch}" ]
   end
 
   def push_updates_to_origin
     drop_commands_cache
     cur_branch = current_branch_name
     run_cmds [
-      "git pull origin #{cur_branch}",
+      "git pull --rebase origin #{cur_branch}",
       "git push origin #{cur_branch}"
     ]
   end
