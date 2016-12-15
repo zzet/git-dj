@@ -1,3 +1,5 @@
+require 'git_dj/version'
+
 class GitDj
   require 'git_dj/version'
   INTEGRATION_BRANCH = 'staging'
