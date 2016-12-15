@@ -1,10 +1,10 @@
 require 'git_dj/version'
 
 class GitDj
-  require 'git_dj/version'
-  INTEGRATION_BRANCH = 'staging'
-  RELEASE_BRANCH = 'master'
-  LOG_FILE_NAME = '/tmp/gdj_activity'
+  INTEGRATION_BRANCH = 'staging'.freeze
+  RELEASE_BRANCH = 'master'.freeze
+  TMP_DIR = (ENV['TMP_DIR'] || '/tmp').freeze
+  LOG_FILE_NAME = "#{TMP_DIR}/gdj_activity".freeze
 
   class CommandFailedError < StandardError; end;
 
